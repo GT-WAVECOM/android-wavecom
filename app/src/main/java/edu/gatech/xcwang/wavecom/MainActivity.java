@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button connectServerButton;
     private Button walkiTalkiBtn;
     private LiveChat chatClient;
+    private boolean isCalling = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,11 @@ public class MainActivity extends AppCompatActivity {
         connectServerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initiateCall();
+                if (!isCalling) {
+                    initiateCall();
+                } else {
+                    cancelCall();
+                }
             }
         });
 
@@ -63,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                     boolean initRes = chatClient.chatInit();
 
                     if (initRes) {
+                        isCalling = true;
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -100,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void cancelCall() {
+        isCalling = false;
         walkiTalkiBtn.setVisibility(View.INVISIBLE);
         Thread cancelCallThread = new Thread(new Runnable() {
             @Override

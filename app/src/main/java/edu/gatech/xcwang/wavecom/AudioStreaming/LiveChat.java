@@ -43,14 +43,14 @@ public class LiveChat {
             //Signaling process through azure-iot-hub message
             isRinging = true;
             //start the ringtone
-            ringtone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-            Ringtone r = RingtoneManager.getRingtone(ringtoneContext, ringtone);
-            r.play();
-
+//            ringtone = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+//            Ringtone r = RingtoneManager.getRingtone(ringtoneContext, ringtone);
+//            r.play();
+//
             CommuMessage peerRes = appClient.RequestForConnection(deviceId);
-
-            //end the ringtone
-            r.stop();
+//
+//            //end the ringtone
+//            r.stop();
             isRinging = false;
 
             if (peerRes == null) {

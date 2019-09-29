@@ -16,7 +16,7 @@ public class AppClient {
     private int masterPort = 7000;
     private IPEndPoint master = null;
     private String pool = "";
-    private DatagramSocket socket = null;
+    private DatagramSocket socket;
     private IPEndPoint target = null;
 
     public AppClient(String masterIp, int masterPort, DatagramSocket socket)
@@ -84,17 +84,13 @@ public class AppClient {
             socket.setSoTimeout(15000); //15s timeout for waiting the response from AWS server
             socket.receive(receivePacket);
 
-            if (new String(receiveBuffer).equals("offline")) {
+            if (new String(receiveBuffer).equals("offline!")) {
                 Log.d(TAG, "device offline");
                 return null;
             } else if (new String(receiveBuffer).equals("cancel!!")) {
                 Log.d(TAG, "Request cancelled");
                 return null;
             }
-
-            receivePacket = new DatagramPacket(receiveBuffer, receiveBuffer.length);
-            socket.setSoTimeout(15000); //15s timeout for waiting the response from ESP_32
-            socket.receive(receivePacket);
 
             // Parse message
             CommuMessage commuMessage = Byte2Address(receiveBuffer);
@@ -113,6 +109,10 @@ public class AppClient {
     }
 
     public void RequestConnectionCancel(boolean isRinging) {
+        if (target == null) {
+            return;
+        }
+
         DatagramPacket sendPacket;
         DatagramPacket receivePacket;
         try {

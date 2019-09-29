@@ -193,9 +193,7 @@ public class AudioStreaming {
                                 socket.send(sendingPacket);
 //                                Thread.sleep(8);
                             }
-//                            toSend = MuLawEncoder.MuLawEncode(inputBuffers[inputBuffersIndex], read, true);
-//                            sendingPacket = new DatagramPacket(toSend, toSend.length, master.getIpAddress(), master.getPort());
-//                            socket.send(sendingPacket);
+
                             inputBuffersIndex = (inputBuffersIndex + 1) % inputBufferNums;
                         }
                     }
