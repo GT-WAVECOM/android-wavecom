@@ -153,7 +153,7 @@ public class AudioStreaming {
                         // while not talking, send heart beat
                         sendingPacket = new DatagramPacket(hearBeat, 1, master.getIpAddress(), master.getPort());
                         socket.send(sendingPacket);
-                        Thread.sleep(1500);
+                        Thread.sleep(500);
                     }
                 } catch (Exception e) {
                     Log.d(TAG, e + "");

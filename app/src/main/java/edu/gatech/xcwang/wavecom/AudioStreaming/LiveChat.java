@@ -34,8 +34,8 @@ public class LiveChat {
     public boolean chatInit() {
         TURN_Server = "54.83.79.129";
         Random rand = new Random();
-        TURN_Port = TURN_Ports[rand.nextInt(7)];
-//        TURN_Port = 11000;
+//        TURN_Port = TURN_Ports[rand.nextInt(7)];
+        TURN_Port = 7000;
 
         try {
             appClient = new AppClient(TURN_Server, TURN_Port, Voip_socket);
