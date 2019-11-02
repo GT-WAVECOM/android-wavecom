@@ -33,7 +33,7 @@ public class LiveChat {
 
     public boolean chatInit() {
         TURN_Server = "54.83.79.129";
-        Random rand = new Random();
+//        Random rand = new Random();
 //        TURN_Port = TURN_Ports[rand.nextInt(7)];
         TURN_Port = 7000;
 

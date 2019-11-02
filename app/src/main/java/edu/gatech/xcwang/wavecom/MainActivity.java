@@ -18,7 +18,7 @@ import edu.gatech.xcwang.wavecom.AudioStreaming.LiveChat;
 public class MainActivity extends AppCompatActivity {
     private static DatagramSocket Voip_socket;
     private static final int REQUEST_PERMISSION = 123;
-    private static String deviceId = "abcdefgh";
+    private static String deviceId = "rasp";
     private Button connectServerButton;
     private Button walkiTalkiBtn;
     private LiveChat chatClient;

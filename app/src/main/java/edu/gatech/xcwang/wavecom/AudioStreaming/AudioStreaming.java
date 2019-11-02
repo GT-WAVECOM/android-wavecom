@@ -225,7 +225,7 @@ public class AudioStreaming {
                     while (isReceiving) {
                         receivingPacket = new DatagramPacket(outputBuffers[outPutBuffersIndex], BUFFER_UNIT_LENGTH);
                         socket.receive(receivingPacket);
-                        Log.d(TAG, receivingPacket.getLength() + "");
+//                        Log.d(TAG, receivingPacket.getLength() + "");
                         if (receivingPacket.getLength() < BUFFER_UNIT_LENGTH) continue; // skip the first few packets during device ringing
                         toWrite = MuLawDecoder.MuLawDecode(outputBuffers[outPutBuffersIndex]);
                         audioTrack.write(toWrite, 0, toWrite.length);
